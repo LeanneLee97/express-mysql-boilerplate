@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ContentFilters</key>
+	<dict/>
+	<key>auto_connect</key>
+	<true/>
+	<key>data</key>
+	<dict>
+		<key>connection</key>
+		<dict>
+			<key>database</key>
+			<string>airline</string>
+			<key>host</key>
+			<string>127.0.0.1</string>
+			<key>name</key>
+			<string>airline</string>
+			<key>port</key>
+			<integer>3306</integer>
+			<key>rdbms_type</key>
+			<string>mysql</string>
+			<key>sslCACertFileLocation</key>
+			<string></string>
+			<key>sslCACertFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslCertificateFileLocation</key>
+			<string></string>
+			<key>sslCertificateFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslKeyFileLocation</key>
+			<string></string>
+			<key>sslKeyFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>type</key>
+			<string>SPTCPIPConnection</string>
+			<key>useSSL</key>
+			<integer>0</integer>
+			<key>user</key>
+			<string>root</string>
+		</dict>
+		<key>session</key>
+		<dict>
+			<key>connectionEncoding</key>
+			<string>utf8</string>
+			<key>contentFilter</key>
+			<dict/>
+			<key>contentPageNumber</key>
+			<integer>1</integer>
+			<key>contentSelection</key>
+			<data>
+			YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFy
+			Y2hpdmVyVCR0b3ASAAGGoK4HCBUWFxgZHSQpLTI1OlUkbnVsbNMJ
+			CgsMEBRXTlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6MNDg+AAoAD
+			gASjERITgAWABoAIgA1UdHlwZVRyb3dzVGtleXNfECZTZWxlY3Rp
+			b25EZXRhaWxUeXBlUHJpbWFyeUtleWVkRGV0YWlsc9MJCgsaGxyg
+			oIAH0h4fICFaJGNsYXNzbmFtZVgkY2xhc3Nlc18QE05TTXV0YWJs
+			ZURpY3Rpb25hcnmjICIjXE5TRGljdGlvbmFyeVhOU09iamVjdNIK
+			CyUooiYngAmAC4AM0gsqKyxZTlMuc3RyaW5ngApXc2VhdF9pZNIe
+			Hy4vXxAPTlNNdXRhYmxlU3RyaW5noy4wMVhOU1N0cmluZ1hOU09i
+			amVjdNILKis0gApfEBJmbGlnaHRfc2NoZWR1bGVfaWTSHh82N15O
+			U011dGFibGVBcnJheaM2ODlXTlNBcnJheVhOU09iamVjdNIeHyI7
+			oiI8WE5TT2JqZWN0XxAPTlNLZXllZEFyY2hpdmVy0T9AVGRhdGGA
+			AQAIABEAGgAjAC0AMgA3AEYATABTAFsAZgBtAHEAcwB1AHcAewB9
+			AH8AgQCDAIgAjQCSALsAwgDDAMQAxgDLANYA3wD1APkBBgEPARQB
+			FwEZARsBHQEiASwBLgE2ATsBTQFRAVoBYwFoAWoBfwGEAZMBlwGf
+			AagBrQGwAbkBywHOAdMAAAAAAAACAQAAAAAAAABBAAAAAAAAAAAA
+			AAAAAAAB1Q==
+			</data>
+			<key>contentSortColIsAsc</key>
+			<false/>
+			<key>contentViewport</key>
+			<string>{{0, 0}, {748, 473}}</string>
+			<key>isToolbarVisible</key>
+			<true/>
+			<key>queries</key>
+			<string>select * from flight
+select * from user
+select * from availability
+select * from booking
+select * from schedule s
+where s.depart_airport like 'Ukraine' and s.arrival_airport like 'Philippines' and s.depart_datetime &gt;= '2019-02-21';
+select * from availability a, flightschedule fs
+where a.flight_schedule_id = fs.flight_schedule_id
+and a.availability = 0 and fs.flight_schedule_id = 1;
+select * from schedule s
+where s.depart_datetime &lt; CURRENT_DATE() - 365
+and s.depart_airport LIKE '%China%'
+and s.arrival_airport LIKE '%poland%'
+order by s.price asc
+limit 10
+
+select * from user where email like "%mpoliniol@icq.com" and password like "UhZbSCgp"
+
+select DATE_SUB(NOW(),INTERVAL 1 YEAR)
+
+select * from aircraft
+select * from flight
+select * from schedule
+select * from availability
+select * from flightschedule
+
+select
+	s.schedule_id,
+	s.arrival_airport,
+	s.arrival_datetime,
+	s.depart_airport,
+	s.depart_datetime,
+	s.price,
+	fs.flight_schedule_id,
+	fs.flight_id,
+	f.aircraft_id
+from schedule s, flightschedule fs, flight f, aircraft a
+where s.schedule_id = fs.schedule_id
+and fs.flight_id = f.flight_id
+and f.aircraft_id = a.aircraft_id
+
+select * from availability av, flightschedule fs
+where av.flight_schedule_id = fs.flight_schedule_id
+and fs.flight_schedule_id = '9954496335'
+
+and fs.flight_schedule_id = av.availability
+group by f.flight_id, a.aircraft_id, s.schedule_id
+
+select a.* from availability a, flightschedule fs, schedule s
+--       where a.flight_schedule_id = fs.flight_schedule_id
+--       and a.availability = 1
+      where fs.schedule_id = s.schedule_id
+      and fs.flight_schedule_id = a.flight_schedule_id
+      and depart_datetime &gt;= CURRENT_DATE() - 365
+      group by fs.schedule_id
+      
+      select * from flight
+      select * from flightschedule
+      select * from schedule s
+      where s.depart_datetime &gt; DATE_SUB(NOW(),INTERVAL 10 YEAR)
+      order by s.price asc</string>
+			<key>table</key>
+			<string>availability</string>
+			<key>view</key>
+			<string>SP_VIEW_CUSTOMQUERY</string>
+			<key>windowVerticalDividerPosition</key>
+			<real>200</real>
+		</dict>
+	</dict>
+	<key>encrypted</key>
+	<false/>
+	<key>format</key>
+	<string>connection</string>
+	<key>queryFavorites</key>
+	<array/>
+	<key>queryHistory</key>
+	<array>
+		<string>select * from availability av, flightschedule fs
+where av.flight_schedule_id = fs.flight_schedule_id
+and fs.flight_schedule_id like '9954496335'</string>
+		<string>select * from availability av, flightschedule fs
+where av.flight_schedule_id = fs.flight_schedule_id
+where fs.flight_schedule_id = '9954496335'</string>
+		<string>select * from availability av, flightschedule fs
+where av.flight_schedule_id = fs.flight_schedule_id
+where fs.flight_schedule_id like '9954496335'</string>
+		<string>select * from availability av, flightschedule fs
+where av.flight_schedule_id = fs.flight_schedule_id</string>
+		<string>select * from availability</string>
+		<string>select * from flightschedule</string>
+		<string>select * from schedule</string>
+		<string>select
+	s.schedule_id,
+	s.arrival_airport,
+	s.arrival_datetime,
+	s.depart_airport,
+	s.depart_datetime,
+	s.price,
+	fs.flight_schedule_id,
+	fs.flight_id,
+	f.aircraft_id
+from schedule s, flightschedule fs, flight f, aircraft a
+where s.schedule_id = fs.schedule_id
+and fs.flight_id = f.flight_id
+and f.aircraft_id = a.aircraft_id</string>
+		<string>select
+	s.schedule_id,
+	s.arrival_airport,
+	s.arrival_datetime,
+	s.depart_airport,
+	s.depart_datetime,
+	s.price,
+	fs.flight_schedule_id,
+	fs.flight_id,
+	f.aircraft_id
+from schedule s, flightschedule fs, flight f
+where s.schedule_id = fs.schedule_id
+and fs.flight_id = f.flight_id</string>
+		<string>select
+	s.schedule_id,
+	s.arrival_airport,
+	s.arrival_datetime,
+	s.depart_airport,
+	s.depart_datetime,
+	s.price,
+	fs.flight_schedule_id,
+	fs.flight_id
+	f.aircraft_id
+from schedule s, flightschedule fs, flight f
+where s.schedule_id = fs.schedule_id
+and fs.flight_id = f.flight_id</string>
+		<string>select * from flight</string>
+		<string>select
+	s.schedule_id,
+	s.arrival_airport,
+	s.arrival_datetime,
+	s.depart_airport,
+	s.depart_datetime,
+	s.price,
+	fs.flight_schedule_id,
+	fs.flight_id
+from schedule s, flightschedule fs, flight f
+where s.schedule_id = fs.schedule_id
+and fs.flight_id = f.flight_id</string>
+		<string>select
+	s.schedule_id,
+	s.arrival_airport,
+	s.arrival_datetime,
+	s.depart_airport,
+	s.depart_datetime,
+	s.price,
+	fs.flight_schedule_id,
+	fs.flight_id
+from schedule s, flightschedule fs
+where s.schedule_id = fs.schedule_id</string>
+		<string>select
+	s.schedule_id,
+	s.arrival_airport,
+	s.arrival_datetime,
+	s.depart_airport,
+	s.depart_datetime,
+	s.price,
+	fs.flight_schedule_id,
+	fs.flight_id
+from schedule s, flightschedule fs</string>
+		<string>select
+	s.schedule_id,
+	s.arrival_airport,
+	s.arrival_datetime,
+	s.depart_airport,
+	s.depart_datetime,
+	s.price,
+	fs.flight_schedule_id
+	fs.flight_id
+from schedule s, flightschedule fs</string>
+		<string>select * from schedule s, flightschedule fs
+where s.schedule_id = fs.schedule_id</string>
+		<string>select * from schedule s, aircraft a, flight f, availability av, flightschedule fs
+where s.schedule_id = fs.schedule_id
+and fs.flight_id = f.flight_id
+and fs.flight_schedule_id = av.availability
+group by f.flight_id, a.aircraft_id, s.schedule_id</string>
+		<string>select * from schedule s, aircraft a, flight f, availability av, flightschedule fs
+where s.schedule_id = fs.schedule_id
+and fs.flight_id = f.flight_id
+and fs.flight_schedule_id = av.availability
+group by f.flight_id, a.aircraft_id</string>
+		<string>select * from schedule s, aircraft a, flight f, availability av, flightschedule fs
+where s.schedule_id = fs.schedule_id
+and fs.flight_id = f.flight_id
+and fs.flight_schedule_id = av.availability
+group by s.flight_id, a.aircraft_id</string>
+		<string>select * from schedule s, aircraft a, flight f, availability av, flightschedule fs
+where s.schedule_id = fs.schedule_id
+and fs.flight_id = f.flight_id
+and fs.flight_schedule_id = av.availability
+group by s.schedule_id</string>
+	</array>
+	<key>rdbms_type</key>
+	<string>mysql</string>
+	<key>rdbms_version</key>
+	<string>5.7.21</string>
+	<key>version</key>
+	<integer>1</integer>
+</dict>
+</plist>
